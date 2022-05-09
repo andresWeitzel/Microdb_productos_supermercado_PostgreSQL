@@ -213,7 +213,7 @@
 * git commit -m "agrega un comentario entre comillas"
 
 #### 4.5)  Le indicamos a git donde se va a almacenar nuestro proyecto(fijate en tu repositorio de github cual es el enlace de tu proyecto(esta en code)).
-* git remote add origin https://github.com/andresWeitzel/db_supermercado
+* git remote add origin https://github.com/andresWeitzel/Microdb_productos_supermercado_PostgreSQL
 
 #### 4.6) Subimos nuestro proyecto.
 * git push -u origin master
@@ -235,10 +235,10 @@
 
 #### 5.4) Sincronizamos y traemos todos los cambios del repositorio remoto a la rama en la que estemos trabajando actualmente.
 ##### (SOLO SI SE REALIZARON CAMBIOS DESDE OTRA LADO, ej: en github u/o/y un equipo de trabajo)
-* git pull https://github.com/andresWeitzel/db_supermercado
+* git pull https://github.com/andresWeitzel/Microdb_productos_supermercado_PostgreSQL
 
 #### 5.5) Enviamos todos los cambios locales al repo en github
-* git push https://github.com/andresWeitzel/db_supermercado
+* git push https://github.com/andresWeitzel/Microdb_productos_supermercado_PostgreSQL
 
 #### 5.6) En casos extremos pisamos todo el repositorio
 * git push -f --set-upstream origin master
