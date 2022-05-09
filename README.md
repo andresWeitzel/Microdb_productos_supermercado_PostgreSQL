@@ -14,7 +14,7 @@
 
 #### Diagrama Entidad Relación  `microdb_productos_supermercado`
 
-![Index app](https://github.com/andresWeitzel/db_supermercado_tienda_online/blob/master/doc/db_supermercado_ER.png)
+![Index app](https://github.com/andresWeitzel/Microdb_productos_supermercado_PostgreSQL)
 
 
 * DBeaver implementa la Notación IDEF1X para el Diagrama Entidad Relación. En la documentación que anexa DBeaver(https://dbeaver.com/docs/wiki/ER-Diagrams/) no está del todo claro la relación que implementa. Investigando sobre las mismas, se puede concluir que la Relación Diamante y Círculo entre línea Punteada se declara como relaciónes Opcionales.
@@ -26,7 +26,7 @@
 ### Vista de Registros como Ejemplificación
 #### Listado de productos de la Tabla  `productos`
 
-![Index app](https://github.com/andresWeitzel/db_supermercado_tienda_online/blob/master/doc/listado_productos.png)
+![Index app](https://github.com/andresWeitzel/Microdb_productos_supermercado_PostgreSQL/blob/master/documentation/listado_productos.png)
 
 
 
