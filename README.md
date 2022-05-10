@@ -30,6 +30,11 @@
 ![Index app](https://github.com/andresWeitzel/Microdb_productos_supermercado_PostgreSQL/blob/master/documentation/listado_productos.png)
 
 
+#### Listado de usuarios de la Tabla  `usuarios` aplicando la codificación AES
+
+![Index app](https://github.com/andresWeitzel/Microdb_productos_supermercado_PostgreSQL/blob/master/documentation/listado-usuarios.png)
+
+
 
 <hr>
 
