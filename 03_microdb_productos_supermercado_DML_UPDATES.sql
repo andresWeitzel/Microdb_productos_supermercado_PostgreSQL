@@ -53,8 +53,19 @@ select * from productos;
 
 
 
-
-
 -- ---------------------------------------------------------------------------
 
 -- ---------------------------------------------------------------------------
+
+-- ================================
+-- ======= TABLA USUARIOS ========
+-- ===============================
+
+select * from usuarios;
+
+--Actualizamos el Usuario segun su Nombre
+update usuarios set password=PGP_SYM_ENCRYPT('Asd123ggh','AES_KEY') where usuario='Marcos';
+
+
+
+select * from usuarios;

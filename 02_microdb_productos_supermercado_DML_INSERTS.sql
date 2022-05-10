@@ -7,19 +7,25 @@
  * ========= DML INSERTS =============
  */
 
--- Eliminamos todos los Registros de la tabla 
+-- Eliminamos todos los Registros de las tablas
 delete from productos;
+delete from usuarios;
 
--- Reiniciamos la Secuencia
+-- Reiniciamos las Secuencias
 alter sequence id_sec_productos restart with 1;
+alter sequence id_sec_usuarios restart with 1;
+
+--Extension encriptacion
+-- http://rafinguer.blogspot.com/2019/08/encriptacion-de-columnas-en-postgresql.html
+drop extension pgcrypto;
+create extension pgcrypto;
 
 
 -- ---------------------------------------------------------------------------
-
 -- ---------------------------------------------------------------------------
 
 -- ==================================
--- ======= TABLA PRODUCTOS ===========
+-- ======= TABLA PRODUCTOS ==========
 -- ==================================
 
 
@@ -73,6 +79,22 @@ select * from productos;
 
 
 
--- ---------------------------------------------------------------------------
 
 -- ---------------------------------------------------------------------------
+-- ---------------------------------------------------------------------------
+
+-- ==================================
+-- ======= TABLA USUARIOS ===========
+-- ==================================
+
+
+select column_name, data_type, is_nullable from 
+information_schema.columns where table_name = 'usuarios';
+
+
+insert into usuarios(usuario, password, rol) values
+('admin',PGP_SYM_ENCRYPT('admin','AES_KEY'),'ADMIN'),
+('Andres',PGP_SYM_ENCRYPT('123456','AES_KEY'),'ADMIN'),
+('Marcos',PGP_SYM_ENCRYPT('AAssdd','AES_KEY'),'USER');
+
+select * from usuarios;

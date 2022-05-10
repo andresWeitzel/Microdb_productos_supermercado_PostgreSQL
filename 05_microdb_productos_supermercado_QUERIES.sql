@@ -40,7 +40,17 @@ select * from productos order by codigo;
 
 
 
-
 -- ---------------------------------------------------------------------------
 
 -- ---------------------------------------------------------------------------
+
+-- ================================
+-- ======= TABLA USUARIOS ========
+-- ================================
+
+select * from usuarios;
+
+
+--Usuarios Ordenados por usuarios
+select * from usuarios order by usuario;
+
