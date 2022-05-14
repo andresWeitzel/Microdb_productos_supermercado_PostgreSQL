@@ -1,22 +1,21 @@
 
-/* ---------------------------------------
- * ------ PRODUCTOS SUPERMERCADO ---------
- * ---------------------------------------
+/* -----------------------------------------------
+ * ------ MICRODB PRODUCTOS SUPERMERCADO ---------
+ * -----------------------------------------------
  * 
  * 
  * ========= DDL =============
  */
 
 
-
+--TABLES
 drop table if exists productos ;
 drop table if exists usuarios ;
 
-drop sequence if exists id_sec_productos;
-drop sequence if exists id_sec_usuarios;
 
-
-
+-- UUID VALUES
+drop extension if exists "uuid-ossp";
+create extension if not exists "uuid-ossp";
 
 -- ---------------------------------------------------------------------------
 -- ---------------------------------------------------------------------------
@@ -26,13 +25,13 @@ drop sequence if exists id_sec_usuarios;
 
 create table productos(
 
-id int primary key,
-codigo varchar(100) not null,
+id uuid default uuid_generate_v4() primary key,
+codigo varchar(255) not null,
 imagen varchar(600) ,
 nombre varchar(100) not null,
-marca varchar(60) not null,
-tipo varchar(60) not null,-- bebidas, almacen, carnes y pescados, frutas y verduras, etc 
-grupo varchar(60) not null, -- Vinos, Gaseosas, etc
+marca varchar(100) not null,
+tipo varchar(100) not null,-- bebidas, almacen, carnes y pescados, frutas y verduras, etc 
+grupo varchar(100) not null, -- Vinos, Gaseosas, etc
 peso decimal(8,3) not null,
 precio_unidad decimal(8,3) not null,
 stock smallint not null
@@ -42,10 +41,6 @@ stock smallint not null
 
 -- ======= Restricciones Tabla productos ===========
 
--- UNIQUE ID
-alter table productos 
-add constraint UNIQUE_productos_id
-unique(id);
 
 --UNIQUE CODIGO
 alter table productos
@@ -91,7 +86,7 @@ check((nombre <> '') and (marca <> '') and (tipo <> '') and (grupo <> ''));
 
 create table usuarios(
 
-id int primary key,
+id uuid default uuid_generate_v4() primary key,
 usuario varchar(100) not null,
 password varchar(255) not null,
 rol varchar(50) not null
@@ -101,10 +96,6 @@ rol varchar(50) not null
 
 -- ======= Restricciones Tabla productos ===========
 
--- UNIQUE ID
-alter table usuarios 
-add constraint UNIQUE_usuarios_id
-unique(id);
 
 --UNIQUE USUARIO
 alter table usuarios
@@ -125,20 +116,6 @@ check((usuario <> '') and (password <> '') and (rol <> ''));
 
 -- ---------------------------------------------------------------------------
 
-
-
-
-create sequence id_sec_productos;
-create sequence id_sec_usuarios;
-
-
-alter table productos alter id set default nextval('id_sec_productos');
-alter table usuarios alter id set default nextval('id_sec_usuarios');
-
-
--- ---------------------------------------------------------------------------
-
--- ---------------------------------------------------------------------------
 
 
 

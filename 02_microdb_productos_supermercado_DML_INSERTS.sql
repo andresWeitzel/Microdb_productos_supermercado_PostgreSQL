@@ -1,7 +1,7 @@
 
-/* ---------------------------------------
- * ------ PRODUCTOS SUPERMERCADO ---------
- * ---------------------------------------
+/* -----------------------------------------------
+ * ------ MICRODB PRODUCTOS SUPERMERCADO ---------
+ * -----------------------------------------------
  * 
  * 
  * ========= DML INSERTS =============
@@ -10,10 +10,6 @@
 -- Eliminamos todos los Registros de las tablas
 delete from productos;
 delete from usuarios;
-
--- Reiniciamos las Secuencias
-alter sequence id_sec_productos restart with 1;
-alter sequence id_sec_usuarios restart with 1;
 
 --Extension encriptacion
 -- http://rafinguer.blogspot.com/2019/08/encriptacion-de-columnas-en-postgresql.html
