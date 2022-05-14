@@ -27,7 +27,7 @@
 ### Vista de Registros como Ejemplificación
 #### Listado de productos de la Tabla  `productos`
 
-![Index app](https://github.com/andresWeitzel/Microdb_productos_supermercado_PostgreSQL/blob/master/documentation/listado_productos.png)
+![Index app](https://github.com/andresWeitzel/Microdb_productos_supermercado_PostgreSQL/blob/master/documentation/listado-productos.png)
 
 
 #### Listado de usuarios de la Tabla  `usuarios` aplicando la codificación AES
