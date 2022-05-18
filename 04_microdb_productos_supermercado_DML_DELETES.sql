@@ -44,7 +44,7 @@ select * from usuarios;
 delete from usuarios where ((usuario ='Marcos')and (rol = 'USER'));
 
 --Reinsertamos el usuario
-insert into usuarios(usuario,password, rol)values
-('Marcos',PGP_SYM_ENCRYPT('Asd123L99','AES_KEY'),'USER');
+insert into usuarios(usuario,passwd, rol)values
+('Marcos','Asd123L99','USER');
 
 select * from usuarios;

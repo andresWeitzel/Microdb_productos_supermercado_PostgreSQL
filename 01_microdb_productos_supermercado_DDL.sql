@@ -88,7 +88,7 @@ create table usuarios(
 
 id uuid default uuid_generate_v4() primary key,
 usuario varchar(100) not null,
-password varchar(255) not null,
+passwd varchar(255) not null,
 rol varchar(50) not null
 
 );
@@ -105,8 +105,8 @@ unique(usuario);
 
 -- CHECK USUARIO | PASSWORD | ROL 
 alter table usuarios 
-add constraint CHECK_usuario_password_rol
-check((usuario <> '') and (password <> '') and (rol <> ''));
+add constraint CHECK_usuario_passwd_rol
+check((usuario <> '') and (passwd <> '') and (rol <> ''));
 
 
 

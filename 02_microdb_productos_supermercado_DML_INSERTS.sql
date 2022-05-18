@@ -11,10 +11,6 @@
 delete from productos;
 delete from usuarios;
 
---Extension encriptacion
--- http://rafinguer.blogspot.com/2019/08/encriptacion-de-columnas-en-postgresql.html
-drop extension pgcrypto;
-create extension pgcrypto;
 
 
 -- ---------------------------------------------------------------------------
@@ -87,10 +83,10 @@ select * from productos;
 select column_name, data_type, is_nullable from 
 information_schema.columns where table_name = 'usuarios';
 
-
-insert into usuarios(usuario, password, rol) values
-('admin',PGP_SYM_ENCRYPT('admin','AES_KEY'),'ADMIN'),
-('Andres',PGP_SYM_ENCRYPT('123456','AES_KEY'),'ADMIN'),
-('Marcos',PGP_SYM_ENCRYPT('AAssdd','AES_KEY'),'USER');
+//https://daniel.fone.net.nz/blog/2020/09/09/timing-safe-bcrypt-authentication-in-postgresql/
+insert into usuarios(usuario, passwd, rol) values
+('admin',crypt('admin', gen_salt('bf')),'ADMIN'),
+('Andres','123456','ADMIN'),
+('Marcos','AAssdd','USER');
 
 select * from usuarios;

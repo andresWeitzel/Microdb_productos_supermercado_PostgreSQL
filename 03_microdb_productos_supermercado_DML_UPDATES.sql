@@ -64,7 +64,7 @@ select * from productos;
 select * from usuarios;
 
 --Actualizamos el Usuario segun su Nombre
-update usuarios set password=PGP_SYM_ENCRYPT('Asd123ggh','AES_KEY') where usuario='Marcos';
+update usuarios set passwd = 'Asd123ggh' where usuario='Marcos';
 
 
 
