@@ -85,8 +85,36 @@ information_schema.columns where table_name = 'usuarios';
 
 -- https://daniel.fone.net.nz/blog/2020/09/09/timing-safe-bcrypt-authentication-in-postgresql/
 insert into usuarios(usuario, passwd, rol) values
-('admin',crypt('admin', gen_salt('bf')),'ADMIN'),
-('Andres',crypt('123456', gen_salt('bf')),'ADMIN'),
-('Marcos',crypt('AAssdd', gen_salt('bf')),'USER');
+('admin','admin','ADMIN'),
+('Andres','123456','ADMIN'),
+('Marcos','AAssdd','USER');
 
 select * from usuarios;
+
+
+
+-- ---------------------------------------------------------------------------
+-- ------------------- FUTURA MIGRACION ENCRIPTACION -------------------------
+-- ---------------------------------------------------------------------------
+
+-- ==================================
+-- ======= TABLA USUARIOS ===========
+-- ==================================
+
+
+--select column_name, data_type, is_nullable from 
+--information_schema.columns where table_name = 'usuarios';
+
+-- https://daniel.fone.net.nz/blog/2020/09/09/timing-safe-bcrypt-authentication-in-postgresql/
+--insert into usuarios(usuario, passwd, rol) values
+--('admin',crypt('admin', gen_salt('bf')),'ADMIN'),
+--('Andres',crypt('123456', gen_salt('bf')),'ADMIN'),
+--('Marcos',crypt('AAssdd', gen_salt('bf')),'USER');
+
+--select * from usuarios;
+
+
+
+
+
+

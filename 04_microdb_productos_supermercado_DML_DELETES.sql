@@ -45,6 +45,6 @@ delete from usuarios where ((usuario ='Marcos')and (rol = 'USER'));
 
 --Reinsertamos el usuario
 insert into usuarios(usuario,passwd, rol)values
-('Marcos',crypt('Asd123L99', gen_salt('bf')),'USER');
+('Marcos','Asd123L99','USER');
 
 select * from usuarios;
