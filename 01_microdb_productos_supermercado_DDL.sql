@@ -8,14 +8,24 @@
  */
 
 
---TABLES
-drop table if exists productos ;
-drop table if exists usuarios ;
+-- BUSINESS TABLES
+drop table if exists productos cascade;
+
+-- SECURITY TABLES
+drop table if exists usuarios cascade;
+drop table if exists roles cascade;
+drop table if exists usuarios_roles cascade;
+
+-- ENUMERADOS
+-- Enumerados tabla roles
+drop type if exists tipo_rol_enum cascade;
 
 
--- UUID VALUES
-drop extension if exists "uuid-ossp";
-create extension if not exists "uuid-ossp";
+-- ID_SEC
+drop sequence if exists id_sec_produc cascade;
+drop sequence if exists id_sec_usuar cascade;
+drop sequence if exists id_sec_roles cascade;
+drop sequence if exists id_sec_usuar_roles cascade;
 
 -- ---------------------------------------------------------------------------
 -- ---------------------------------------------------------------------------
@@ -25,7 +35,7 @@ create extension if not exists "uuid-ossp";
 
 create table productos(
 
-id uuid default uuid_generate_v4() primary key,
+id bigint primary key,
 codigo varchar(255) not null,
 imagen varchar(600) ,
 nombre varchar(100) not null,
@@ -34,7 +44,7 @@ tipo varchar(100) not null,-- bebidas, almacen, carnes y pescados, frutas y verd
 grupo varchar(100) not null, -- Vinos, Gaseosas, etc
 peso decimal(8,3) not null,
 precio_unidad decimal(8,3) not null,
-stock smallint not null
+stock int not null
 
 );
 
@@ -86,10 +96,11 @@ check((nombre <> '') and (marca <> '') and (tipo <> '') and (grupo <> ''));
 
 create table usuarios(
 
-id uuid default uuid_generate_v4() primary key,
-usuario varchar(100) not null,
-passwd varchar(255) not null,
-rol varchar(50) not null
+id bigint primary key,
+nombre varchar(200) not null,
+username varchar(100) not null,
+password varchar(255) not null,
+email varchar(255) not null
 
 );
 
@@ -99,14 +110,14 @@ rol varchar(50) not null
 
 --UNIQUE USUARIO
 alter table usuarios
-add constraint UNIQUE_usuarios_usuario
-unique(usuario);
+add constraint UNIQUE_usuarios_username
+unique(username);
 
 
 -- CHECK USUARIO | PASSWORD | ROL 
 alter table usuarios 
-add constraint CHECK_usuario_passwd_rol
-check((usuario <> '') and (passwd <> '') and (rol <> ''));
+add constraint CHECK_username_password
+check((username <> '') and (password <> ''));
 
 
 
@@ -118,4 +129,75 @@ check((usuario <> '') and (passwd <> '') and (rol <> ''));
 
 
 
+-- ---------------------------------------------------------------------------
+-- ---------------------------------------------------------------------------
+-- ==================================
+-- ======= TABLA ROLES ===========
+-- ==================================
+
+
+create type tipo_rol_enum as enum('ROLE_ADMIN','ROLE_USER');
+
+create table roles(
+
+id bigint primary key,
+rol tipo_rol_enum not null
+
+);
+
+
+-- ======= Restricciones Tabla roles ===========
+
+
+--UNIQUE rol
+alter table roles
+add constraint UNIQUE_roles_rol
+unique(rol);
+
+
+
+-- ---------------------------------------------------------------------------
+
+-- ---------------------------------------------------------------------------
+
+
+
+-- ---------------------------------------------------------------------------
+-- ---------------------------------------------------------------------------
+-- ========================================
+-- ======= TABLA USUARIOS_ROLES ===========
+-- ========================================
+
+
+create table usuarios_roles(
+id bigint primary key,
+id_usuario bigint not null,
+id_rol bigint not null
+
+);
+
+
+-- ======= Restricciones Tabla usuarios_roles ===========
+
+
+-- ---------------------------------------------------------------------------
+
+-- ---------------------------------------------------------------------------
+
+
+
+-- ======== TODOS LOS ID´S PK DE LAS TABLAS COMO AUTO_INCREMENT =======
+
+
+create sequence id_sec_produc;
+create sequence id_sec_usuar;
+create sequence id_sec_roles;
+create sequence id_sec_usuar_roles;
+
+
+
+alter table productos alter id set default nextval('id_sec_produc');
+alter table usuarios alter id set default nextval('id_sec_usuar');
+alter table roles alter id set default nextval('id_sec_roles');
+alter table usuarios_roles alter id set default nextval('id_sec_usuar_roles');
 

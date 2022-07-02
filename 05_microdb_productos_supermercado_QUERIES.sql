@@ -1,3 +1,6 @@
+
+
+/*
 /* -----------------------------------------------
  * ------ MICRODB PRODUCTOS SUPERMERCADO ---------
  * -----------------------------------------------
@@ -54,3 +57,4 @@ select * from usuarios;
 --Usuarios Ordenados por usuarios
 select * from usuarios order by usuario;
 
+*/

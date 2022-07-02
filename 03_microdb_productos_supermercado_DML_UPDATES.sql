@@ -1,4 +1,4 @@
-
+/*
 /* -----------------------------------------------
  * ------ MICRODB PRODUCTOS SUPERMERCADO ---------
  * -----------------------------------------------
@@ -69,3 +69,6 @@ update usuarios set passwd = 'Asd123ggh' where usuario='Marcos';
 
 
 select * from usuarios;
+
+
+*/

@@ -8,8 +8,17 @@
  */
 
 -- Eliminamos todos los Registros de las tablas
-delete from productos;
-delete from usuarios;
+delete from productos cascade;
+delete from usuarios cascade;
+delete from roles cascade;
+delete from usuarios_roles cascade;
+
+
+-- Alteramos la secuencia auto incrementable id 
+alter sequence id_sec_produc restart with 1;
+alter sequence id_sec_usuar restart with 1;
+alter sequence id_sec_roles restart with 1;
+alter sequence id_sec_usuar_roles restart with 1;
 
 
 
@@ -84,35 +93,50 @@ select column_name, data_type, is_nullable from
 information_schema.columns where table_name = 'usuarios';
 
 -- https://daniel.fone.net.nz/blog/2020/09/09/timing-safe-bcrypt-authentication-in-postgresql/
-insert into usuarios(usuario, passwd, rol) values
-('admin','admin','ADMIN'),
-('Andres','123456','ADMIN'),
-('Marcos','AAssdd','USER');
+insert into usuarios(nombre,username, password, email) values
+('Juan Antonio','juan',crypt('123', gen_salt('bf')),'juan@gmail.com'),
+('Andres Weitzel','andres',crypt('123456', gen_salt('bf')),'andres@gmail.com'),
+('admin','admin',crypt('admin', gen_salt('bf')),'admin@gmail.com');
 
 select * from usuarios;
 
 
-
 -- ---------------------------------------------------------------------------
--- ------------------- FUTURA MIGRACION ENCRIPTACION -------------------------
 -- ---------------------------------------------------------------------------
 
 -- ==================================
--- ======= TABLA USUARIOS ===========
+-- ======= TABLA ROLES ===========
 -- ==================================
 
 
---select column_name, data_type, is_nullable from 
---information_schema.columns where table_name = 'usuarios';
+select column_name, data_type, is_nullable from 
+information_schema.columns where table_name = 'roles';
 
--- https://daniel.fone.net.nz/blog/2020/09/09/timing-safe-bcrypt-authentication-in-postgresql/
---insert into usuarios(usuario, passwd, rol) values
---('admin',crypt('admin', gen_salt('bf')),'ADMIN'),
---('Andres',crypt('123456', gen_salt('bf')),'ADMIN'),
---('Marcos',crypt('AAssdd', gen_salt('bf')),'USER');
+insert into roles(rol) values
+('ROLE_ADMIN'),
+('ROLE_USER');
 
---select * from usuarios;
+select * from roles;
 
+-- ---------------------------------------------------------------------------
+-- ---------------------------------------------------------------------------
+
+-- ==================================
+-- ======= TABLA USUARIOS_ROLES ===========
+-- ==================================
+
+
+select column_name, data_type, is_nullable from 
+information_schema.columns where table_name = 'usuarios_roles';
+
+insert into usuarios_roles(id_usuario, id_rol) values
+(2,1),
+(2,2),
+(1,2),
+(3,1),
+(3,2);
+
+select * from usuarios_roles;
 
 
 

@@ -1,3 +1,5 @@
+/*
+
 /* -----------------------------------------------
  * ------ MICRODB PRODUCTOS SUPERMERCADO ---------
  * -----------------------------------------------
@@ -48,3 +50,7 @@ insert into usuarios(usuario,passwd, rol)values
 ('Marcos','Asd123L99','USER');
 
 select * from usuarios;
+
+
+
+*/
