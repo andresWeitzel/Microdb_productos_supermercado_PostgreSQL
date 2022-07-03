@@ -37,7 +37,7 @@ create table productos(
 
 id bigint primary key,
 codigo varchar(255) not null,
-imagen varchar(600) ,
+imagen varchar(600),
 nombre varchar(100) not null,
 marca varchar(100) not null,
 tipo varchar(100) not null,-- bebidas, almacen, carnes y pescados, frutas y verduras, etc 
@@ -176,8 +176,23 @@ id_rol bigint not null
 
 );
 
-
 -- ======= Restricciones Tabla usuarios_roles ===========
+
+
+-- FK id_usuario
+alter table usuarios_roles
+add constraint FK_usuarios_roles_id_usuario
+foreign key (id_usuario)
+references usuarios(id)
+on delete cascade;
+
+-- FK id_rol
+alter table usuarios_roles
+add constraint FK_usuarios_roles_id_rol
+foreign key (id_rol)
+references roles(id)
+on delete cascade;
+
 
 
 -- ---------------------------------------------------------------------------

@@ -1,4 +1,4 @@
-/*
+
 /* -----------------------------------------------
  * ------ MICRODB PRODUCTOS SUPERMERCADO ---------
  * -----------------------------------------------
@@ -63,12 +63,63 @@ select * from productos;
 
 select * from usuarios;
 
---Actualizamos el Usuario segun su Nombre
-update usuarios set passwd = 'Asd123ggh' where usuario='Marcos';
+--Actualizamos la contraseña segun su username
+update usuarios set password = crypt('Asd123ggh', gen_salt('bf')) where username='juan';
+
+
+--Actualizamos el Username segun su Nombre
+update usuarios set username='juanAntonio' where nombre='Juan Antonio';
+
 
 
 
 select * from usuarios;
 
 
-*/
+
+-- ---------------------------------------------------------------------------
+
+-- ---------------------------------------------------------------------------
+
+-- ================================
+-- ======= TABLA ROLES ========
+-- ===============================
+
+select * from roles;
+
+-- pisamos los roles para testear su actualizacion
+update roles set rol = 'ROLE_ADMIN' where rol='ROLE_ADMIN';
+update roles set rol = 'ROLE_USER' where rol='ROLE_USER';
+
+
+select * from roles;
+
+
+-- ---------------------------------------------------------------------------
+-- ---------------------------------------------------------------------------
+
+-- ==================================
+-- ==== TABLA USUARIOS_ROLES ========
+-- ==================================
+
+
+
+select * from usuarios_roles;
+
+-- pisamos los valores para testear su actualizacion
+update usuarios_roles set id_rol  = 2 where (id_usuario = 1 and id = 1);
+update usuarios_roles set id_rol  = 1 where (id_usuario = 2 and id = 2);
+update usuarios_roles set id_rol  = 2 where (id_usuario = 2 and id = 3);
+update usuarios_roles set id_rol  = 1 where (id_usuario = 3 and id = 4);
+update usuarios_roles set id_rol  = 2 where (id_usuario = 3 and id = 5);
+
+
+select * from usuarios_roles;
+
+
+
+
+
+
+
+
