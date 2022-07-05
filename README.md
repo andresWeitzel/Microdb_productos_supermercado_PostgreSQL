@@ -5,11 +5,16 @@
 
 ## Descripción 
 * Micro Base de Datos con PostgreSQL para el Proyecto App Micro_FrontEnd Productos de Supermercado 
-* Base de Datos Raíz : https://github.com/andresWeitzel/db_supermercado
 * Se implementa con el SGDB PostgreSQL a través del GDB DBeaver y se modulariza a través del DDL, DML y QUERIES.
 * Dentro del DML se modulariza la inserción, modificación y eliminación de Registros para la comprobación de funcionalidad de la db 
 * No se desarrolla la sección de Administración ni Gestión de la Base de Datos (Triggers, Procedimientos Almacenados, etc)
 
+</br>
+
+
+* Repo db Raíz : https://github.com/andresWeitzel/db_supermercado
+* Repo Api Rest MicroFront : https://github.com/andresWeitzel/ApiRest_MicroFrontEnd_ProductosSupermercado
+* Repo App MicroFront : https://github.com/andresWeitzel/App_MicroFrontEnd_Productos_SpringBoot_Docker_Kubernate_PostgreSQL
 
 </br>
 
